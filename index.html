@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- makes the website fit different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cat Gallery</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- gallery screen -->``
+    <div id="gallery-screen">
+
+        <div class="page">
+
+            <!-- top header -->
+            <header>
+                <h1>CAT GALLERY</h1>
+            </header>
+
+            <main>
+
+                <!-- gallery title -->
+                <section class="gallery-heading">
+                    <h2>Cats</h2>
+
+                    <p>
+                        Browse cats, filter by tag, and open details.
+                    </p>
+                </section>
+
+
+                <!-- filter section -->
+                <section class="filter-box">
+
+                    <div class="filter-left">
+
+                        <label for="tag-filter">
+                            Filter by tag
+                        </label>
+
+                        <select id="tag-filter">
+                            <option value="">Select tag</option>
+                            <option value="cute">Cute</option>
+                            <option value="orange">Orange</option>
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                        </select>
+
+                    </div>
+
+                    <a href="#" id="clear-filter">
+                        Clear filter
+                    </a>
+
+                </section>
+
+
+                <p class="showing-text">
+                    Showing cats
+                </p>
+
+
+                <!-- cat cards -->
+                <section class="cat-grid">
+
+
+                    <!-- cat 1 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>cute</span>
+                                <span>orange</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 4 comments
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 2 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>cute</span>
+                                <span>white</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 2 comments
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 3 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>black</span>
+                                <span>cute</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 1 comment
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 4 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>orange</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 3 comments
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 5 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>white</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 0 comments
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 6 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>cute</span>
+                                <span>orange</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 2 comments
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 7 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>black</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 1 comment
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- cat 8 -->
+                    <article class="cat-card">
+
+                        <div class="cat-image">
+                            CAT IMAGE
+                        </div>
+
+                        <div class="cat-info">
+
+                            <div class="tags">
+                                <span>cute</span>
+                            </div>
+
+                            <p class="comments">
+                                ▢ 4 comments
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- page buttons -->
+                <nav class="pagination">
+
+                    <button>
+                        ‹ Previous
+                    </button>
+
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+
+                    <button>
+                        Next ›
+                    </button>
+
+                </nav>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- cat details screen -->
+    <div id="details-screen" class="hidden">
+
+        <div class="details-page">
+
+            <!-- button to go back -->
+            <button id="close-details" class="close-button">
+                ×
+            </button>
+
+
+            <!-- left side -->
+            <div class="details-left">
+
+                <div class="large-cat-image">
+                    CAT IMAGE
+                </div>
+
+                <button id="add-text-button" class="dark-button">
+                    Add text to image
+                </button>
+
+            </div>
+
+
+            <!-- right side -->
+            <div class="details-right">
+
+                <h2>Cat details</h2>
+
+
+                <!-- cat tags -->
+                <div class="detail-tags">
+                    <span>cute</span>
+                    <span>orange</span>
+                </div>
+
+
+                <!-- cat id -->
+                <div class="cat-id">
+
+                    <strong>ID</strong>
+
+                    <p>
+                        abc123xyz
+                    </p>
+
+                </div>
+
+
+                <hr>
+
+
+                <!-- comments -->
+                <h3>
+                    Comments · 4
+                </h3>
+
+
+                <div class="comment">
+
+                    <strong>John</strong>
+
+                    <p>
+                        This cat looks extremely serious.
+                    </p>
+
+                    <small>
+                        2 hours ago
+                    </small>
+
+                </div>
+
+
+                <div class="comment">
+
+                    <strong>Sarah</strong>
+
+                    <p>
+                        😂
+                    </p>
+
+                    <small>
+                        Yesterday
+                    </small>
+
+                </div>
+
+
+                <!-- add comment form -->
+                <div class="add-comment">
+
+                    <h3>
+                        Add comment
+                    </h3>
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username">
+
+
+                    <label for="comment">
+                        Comment
+                    </label>
+
+                    <textarea
+                        id="comment"
+                        placeholder="Write a comment..."></textarea>
+
+
+                    <button class="dark-button">
+                        Post comment
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- add text screen -->
+    <div id="text-screen" class="hidden">
+
+        <div class="text-page">
+
+            <!-- go back to details -->
+            <button id="close-text" class="close-button">
+                ×
+            </button>
+
+
+            <!-- image preview -->
+            <div class="text-preview-section">
+
+                <h2>
+                    Add text to cat
+                </h2>
+
+
+                <div class="text-cat-image">
+
+                    <span>
+                        CAT IMAGE
+                    </span>
+
+                    <p id="preview-text">
+                        I NEED MORE SNACKS
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- text options -->
+            <div class="text-settings">
+
+                <h2>
+                    Text settings
+                </h2>
+
+
+                <label for="image-text">
+                    Text
+                </label>
+
+                <input
+                    type="text"
+                    id="image-text"
+                    value="I need more snacks">
+
+
+                <label for="text-size">
+                    Size
+                </label>
+
+                <input
+                    type="number"
+                    id="text-size"
+                    value="50">
+
+
+                <label for="text-color">
+                    Color
+                </label>
+
+                <div class="color-box">
+
+                    <input
+                        type="color"
+                        id="text-color"
+                        value="#222222">
+
+                    <span id="color-number">
+                        #222222
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- link to javascript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
