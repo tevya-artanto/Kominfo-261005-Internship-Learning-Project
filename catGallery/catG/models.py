@@ -6,11 +6,15 @@ from django.utils import timezone
 # TODO: Finish models
 
 class Image(models.Model):
-    tags = models.TextField()
+    # image ID
+    webID = models.IntegerField(primary_key=True)
+    # stores metadata of image retrieved from API
+    catData = models.JSONField()
 
 class Comment(models.Model):
     image = models.ForeignKey(Image, related_name='comments', on_delete=models.CASCADE)
     user = models.TextField()
+    content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
