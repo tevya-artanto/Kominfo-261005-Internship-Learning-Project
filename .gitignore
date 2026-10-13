@@ -1,0 +1,11 @@
+# virtual environment
+catGallery/.venv/
+.venv/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS files
+.DS_Store
