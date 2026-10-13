@@ -1,123 +1,209 @@
-// to getting the screen
+// gets the filter from the gallery page
 
-const galleryScreen = document.getElementById("gallery-screen");
-const detailsScreen = document.getElementById("details-screen");
-const textScreen = document.getElementById("text-screen");
+const clearFilter = document.getElementById("clear-filter");
+const tagFilter = document.getElementById("tag-filter");
+const showingText = document.getElementById("showing-text");
 
-// getting the buttons
-
-const catCards = document.querySelectorAll(".cat-card");
-
-const closeDetails = document.getElementById("close-details");
-
-const addTextButton = document.getElementById("add-text-button");
-
-const closeText = document.getElementById("close-text");
+const catCards = document.querySelectorAll(".cat-card-link");
 
 
-// opens cat details when a cat is clicked
+// gets all tags from the cat cards
 
-catCards.forEach(function(card) {
+if (tagFilter && catCards.length > 0) {
 
-    card.addEventListener("click", function() {
+    const allTags = [];
 
-        galleryScreen.classList.add("hidden");
 
-        detailsScreen.classList.remove("hidden");
+    catCards.forEach(function(card) {
+
+        const tags = card.dataset.tags
+            .split(",")
+            .map(function(tag) {
+
+                return tag.trim();
+
+            })
+            .filter(function(tag) {
+
+                return tag !== "";
+
+            });
+
+
+        tags.forEach(function(tag) {
+
+            if (!allTags.includes(tag)) {
+
+                allTags.push(tag);
+
+            }
+
+        });
 
     });
 
-});
+
+    // sorts tags alphabetically
+
+    allTags.sort();
 
 
-// closes cat details and goes back to gallery
+    // adds each tag to the dropdown
 
-closeDetails.addEventListener("click", function() {
+    allTags.forEach(function(tag) {
 
-    detailsScreen.classList.add("hidden");
+        const option = document.createElement("option");
 
-    galleryScreen.classList.remove("hidden");
+        option.value = tag.toLowerCase();
 
-});
+        option.textContent = tag;
 
+        tagFilter.appendChild(option);
 
-// opens the add text page
+    });
 
-addTextButton.addEventListener("click", function() {
-
-    detailsScreen.classList.add("hidden");
-
-    textScreen.classList.remove("hidden");
-
-});
+}
 
 
-// goes back from add text to cat details
 
-closeText.addEventListener("click", function() {
+// filters the cats when a tag is selected
 
-    textScreen.classList.add("hidden");
+if (tagFilter) {
 
-    detailsScreen.classList.remove("hidden");
+    tagFilter.addEventListener("change", function() {
 
-});
+        const selectedTag = tagFilter.value.toLowerCase();
+
+        let visibleCats = 0;
 
 
-// text settings
+        catCards.forEach(function(card) {
+
+            const tags = card.dataset.tags
+                .toLowerCase()
+                .split(",")
+                .map(function(tag) {
+
+                    return tag.trim();
+
+                });
+
+
+            if (
+                selectedTag === "" ||
+                tags.includes(selectedTag)
+            ) {
+
+                card.style.display = "";
+
+                visibleCats++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        // updates showing cats text
+
+        if (showingText) {
+
+            showingText.textContent =
+                "Showing " + visibleCats + " cats";
+
+        }
+
+    });
+
+}
+
+
+
+// clears the selected filter
+
+if (clearFilter && tagFilter) {
+
+    clearFilter.addEventListener("click", function(event) {
+
+        // stops the link from refreshing the page
+        event.preventDefault();
+
+        tagFilter.value = "";
+
+
+        catCards.forEach(function(card) {
+
+            card.style.display = "";
+
+        });
+
+
+        if (showingText) {
+
+            showingText.textContent =
+                "Showing " + catCards.length + " cats";
+
+        }
+
+    });
+
+}
+
+
+
+// gets the text settings from add text page
 
 const imageText = document.getElementById("image-text");
-
 const textSize = document.getElementById("text-size");
-
 const textColor = document.getElementById("text-color");
 
 const previewText = document.getElementById("preview-text");
-
 const colorNumber = document.getElementById("color-number");
 
 
-// changes the text on the image
+// changes the text shown on the image
 
-imageText.addEventListener("input", function() {
+if (imageText && previewText) {
 
-    previewText.textContent = imageText.value.toUpperCase();
+    imageText.addEventListener("input", function() {
 
-});
+        previewText.textContent =
+            imageText.value.toUpperCase();
+
+    });
+
+}
 
 
-// changes the size of the text
+// changes the text size
 
-textSize.addEventListener("input", function() {
+if (textSize && previewText) {
 
-    previewText.style.fontSize = textSize.value + "px";
+    textSize.addEventListener("input", function() {
 
-});
+        previewText.style.fontSize =
+            textSize.value + "px";
+
+    });
+
+}
 
 
 // changes the text colour
 
-textColor.addEventListener("input", function() {
+if (textColor && previewText && colorNumber) {
 
-    previewText.style.color = textColor.value;
+    textColor.addEventListener("input", function() {
 
-    colorNumber.textContent = textColor.value;
+        previewText.style.color =
+            textColor.value;
 
-});
+        colorNumber.textContent =
+            textColor.value;
 
+    });
 
-
-// clear filter button
-
-const clearFilter = document.getElementById("clear-filter");
-
-const tagFilter = document.getElementById("tag-filter");
-
-
-clearFilter.addEventListener("click", function(event) {
-
-    // stops the link from refreshing the page
-    event.preventDefault();
-
-    tagFilter.value = "";
-
-});
+}

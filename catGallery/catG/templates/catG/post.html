@@ -1,148 +1,224 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <link rel="stylesheet" href="{% static 'catG/css/style.css' %}">
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Post</title>
+
 </head>
+
+
 <body>
+
+
     <!-- cat details screen -->
-    <div id="details-screen" class="hidden">
+
+    <div id="details-screen">
+
 
         <div class="details-page">
 
+
             <!-- button to go back -->
+
             <button id="close-details" class="close-button">
+
                 ×
+
             </button>
 
 
+
             <!-- left side -->
+
             <div class="details-left">
 
+
                 <div class="large-cat-image">
-                    CAT IMAGE
+
+                    <img src="https://cataas.com/cat/{{ image.webID }}" alt="Cat">
+
                 </div>
 
+
                 <button id="add-text-button" class="dark-button">
+
                     Add text to image
+
                 </button>
+
 
             </div>
 
 
+
             <!-- right side -->
+
             <div class="details-right">
 
-                <h2>Cat details</h2>
+
+                <h2>
+                    Cat details
+                </h2>
+
 
 
                 <!-- cat tags -->
+
                 <div class="detail-tags">
-                    <span>cute</span>
-                    <span>orange</span>
+
+
+                    {% for tag in image.catData.tags %}
+
+                    <span>
+                        {{ tag }}
+                    </span>
+
+
+                    {% empty %}
+
+                    <span>
+                        no tags
+                    </span>
+
+
+                    {% endfor %}
+
+
                 </div>
+
 
 
                 <!-- cat id -->
+
                 <div class="cat-id">
 
-                    <strong>ID</strong>
+
+                    <strong>
+                        ID
+                    </strong>
+
 
                     <p>
-                        abc123xyz
+                        {{ image.webID }}
                     </p>
 
+
                 </div>
+
 
 
                 <hr>
 
 
+
                 <!-- comments -->
+
                 <h3>
-                    Comments · 4
+
+                    Comments · {{ image.comments.count }}
+
                 </h3>
 
 
-                <div class="comment">
 
-                    <strong>John</strong>
-
-                    <p>
-                        This cat looks extremely serious.
-                    </p>
-
-                    <small>
-                        2 hours ago
-                    </small>
-
-                </div>
+                {% for comment in image.comments.all %}
 
 
                 <div class="comment">
 
-                    <strong>Sarah</strong>
+
+                    <strong>
+                        {{ comment.user }}
+                    </strong>
+
 
                     <p>
-                        😂
+                        {{ comment.content }}
                     </p>
 
+
                     <small>
-                        Yesterday
+                        {{ comment.date_posted }}
                     </small>
 
+
                 </div>
+
+
+                {% empty %}
+
+
+                <div class="comment">
+
+                    <p>
+                        No comments yet.
+                    </p>
+
+                </div>
+
+
+                {% endfor %}
 
 
                 <!-- add comment form -->
-                <div class="add-comment">
+
+                <form method="POST" class="add-comment">
+
+                    {% csrf_token %}
+
 
                     <h3>
                         Add comment
                     </h3>
 
+
                     <label for="username">
                         Username
                     </label>
 
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Enter username">
+
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
 
 
                     <label for="comment">
                         Comment
                     </label>
 
-                    <textarea
-                        id="comment"
-                        placeholder="Write a comment..."></textarea>
+
+                    <textarea id="comment" name="comment" placeholder="Write a comment..." required></textarea>
 
 
-                    <button class="dark-button">
+                    <button type="submit" class="dark-button">
+
                         Post comment
+
                     </button>
 
-                </div>
+
+                </form>
+
 
             </div>
 
+
         </div>
+
 
     </div>
 
 
+    <script src="{% static 'catG/js/script.js' %}"></script>
 
-    <!-- add text screen -->
-    <div id="text-screen" class="hidden">
 
-        <div class="text-page">
-
-            <!-- go back to details -->
-            <button id="close-text" class="close-button">
-                ×
-            </button>
 </body>
+
 </html>

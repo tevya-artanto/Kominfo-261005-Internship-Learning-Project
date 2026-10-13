@@ -7,7 +7,7 @@ from django.utils import timezone
 
 class Image(models.Model):
     # image ID
-    webID = models.IntegerField(primary_key=True)
+    webID = models.CharField(max_length=100, primary_key=True)    
     # stores metadata of image retrieved from API
     catData = models.JSONField()
 
