@@ -365,6 +365,7 @@ main {
     border-radius: 6px;
 
     background-color: #222222;
+    text-decoration: none;
 
     color: white;
 
@@ -641,6 +642,12 @@ main {
 
 .color-box span {
     font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    align-items: center;
 }
 
 

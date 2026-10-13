@@ -29,13 +29,7 @@
 
             <!-- button to go back -->
 
-            <button id="close-details" class="close-button">
-
-                ×
-
-            </button>
-
-
+            <a href="{% url 'index' %}" class="close-button">x</a>
 
             <!-- left side -->
 
@@ -49,11 +43,13 @@
                 </div>
 
 
-                <button id="add-text-button" class="dark-button">
+                <a href="{% url 'addText' image.webID %}" id="add-text-button" class="dark-button">Add text to image</a>
+
+                <!-- <button id="add-text-button" class="dark-button">
 
                     Add text to image
 
-                </button>
+                </button> -->
 
 
             </div>
